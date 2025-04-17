@@ -24,7 +24,7 @@ fi
 chown -R professor1:ofimatica /home/cursos/ofimatica
 chown -R professor2:disseny /home/cursos/disseny
 chown -R professor3:programacio /home/cursos/programacio
-chown -R professors:professors /home/eines/
+chown -R root:professors /home/eines/
 
 # Permisos per les carpetes
 chmod -R 750 /home/cursos
