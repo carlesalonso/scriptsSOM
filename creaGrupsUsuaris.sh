@@ -33,7 +33,7 @@ for user in ${professors[*]}
 do
     password="123456" # Contrasenya inicial per a tots els professors
     if ! id "$user" > /dev/null 2>&1; then
-        useradd -m -G professors "$user"
+        useradd -s /bin/bash -m -G professors "$user"
         echo "$user:$password" | chpasswd -c SHA512
         echo "Usuari $user creat i afegit al grup professors."
     else
@@ -45,7 +45,7 @@ done
 for user in ${alumnes[*]}
 do
     if ! id "$user" > /dev/null 2>&1; then
-        useradd -m -G alumnes "$user"
+        useradd -s /bin/bash -m -G alumnes "$user"
         echo "Usuari $user creat i afegit al grup alumnes."
     else
         echo "L'usuari $user ja existeix."
