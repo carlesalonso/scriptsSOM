@@ -9,22 +9,22 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+## Variables
 # Llista de grups
 grups=(professors alumnes)
 # Llista de professors
 professors=(professor1 professor2 professor3)
 # Llista d'alumnes
-students=(ofimatica disseny programacio)
-# Llista per posar les contrasenyes inicials
+alumnes=(ofimatica disseny programacio)
 
 # Crear grups
 for grup in ${grups[*]}
 do
     if ! getent group "$grup" > /dev/null; then
         groupadd $grup
-        echo "Grup $grup created."
+        echo "Grup $grup creat."
     else
-        echo "Grup $grup already exists."
+        echo "Grup $grup ja existeix."
     fi
 done
 
@@ -42,7 +42,7 @@ do
 done
 
 # Crear alumnes
-for user in ${students[*]}
+for user in ${alumnes[*]}
 do
     if ! id "$user" > /dev/null 2>&1; then
         useradd -m -G alumnes "$user"
@@ -52,5 +52,5 @@ do
     fi
 done
 
-echo "All groups and users have been created successfully."
+echo "Grups i usuaris creats amb èxit."
 exit 0
