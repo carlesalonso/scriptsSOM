@@ -21,7 +21,7 @@ students=(ofimatica disseny programacio)
 for grup in ${grups[*]}
 do
     if ! getent group "$grup" > /dev/null; then
-        groupadd $group
+        groupadd $grup
         echo "Grup $grup created."
     else
         echo "Grup $grup already exists."
