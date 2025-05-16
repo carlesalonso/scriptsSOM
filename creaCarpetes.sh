@@ -17,8 +17,17 @@ fi
     # |__ eines
     #     ├── utils
 
- mkdir -p /home/cursos/{ofimatica,disseny,programacio}
- mkdir -p /home/eines/utils
+# Si les carpetes ja existeixen s'esborren
+
+if [ -d "/home/cursos" ]; then
+   rm -rf /home/cursos
+fi
+if [ -d "/home/eines" ]; then
+   rm -rf /home/eines
+fi
+ 
+mkdir -p /home/cursos/{ofimatica,disseny,programacio}
+mkdir -p /home/eines/utils
 
 # Propietaris per les diferents carpetes
 chown -R professor1:ofimatica /home/cursos/ofimatica
