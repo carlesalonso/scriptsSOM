@@ -28,10 +28,13 @@ do
     fi
 done
 
+# Contrasenya inicial per a tots els professors
+password="123456" 
+
 # Crear professors
 for user in ${professors[*]}
 do
-    password="123456" # Contrasenya inicial per a tots els professors
+   
     if ! id "$user" > /dev/null 2>&1; then
         useradd -s /bin/bash -m -G professors "$user"
         echo "$user:$password" | chpasswd -c SHA512
