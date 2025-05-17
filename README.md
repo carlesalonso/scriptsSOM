@@ -24,14 +24,14 @@ Script per a la creació i gestió de l'estructura de directoris.
 
 ## Ús
 
-1. Donar permisos d'execució als scripts:
+- Donar permisos d'execució als scripts:
 
 ```bash
 chmod +x creaGrupsUsuaris.sh
 chmod +x creaCarpetes.sh
 ```
 
-2. Executar els scripts en ordre:
+- Executar els scripts en ordre:
 
 ```bash
 ./creaGrupsUsuaris.sh
