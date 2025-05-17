@@ -20,8 +20,8 @@ alumnes=(ofimatica disseny programacio)
 # Crear grups
 for grup in ${grups[*]}
 do
-    if ! getent group "$grup" > /dev/null; then
-        groupadd $grup
+    if ! getent group "$grup" &> /dev/null 2>&1; then
+        groupadd "$grup"
         echo "Grup $grup creat."
     else
         echo "Grup $grup ja existeix."
@@ -35,7 +35,7 @@ password="123456"
 for user in ${professors[*]}
 do
    
-    if ! id "$user" > /dev/null 2>&1; then
+    if ! id "$user" &> /dev/null 2>&1; then
         useradd -s /bin/bash -m -G professors "$user"
         echo "$user:$password" | chpasswd -c SHA512
         echo "Usuari $user creat i afegit al grup professors."
@@ -47,7 +47,7 @@ done
 # Crear alumnes
 for user in ${alumnes[*]}
 do
-    if ! id "$user" > /dev/null 2>&1; then
+    if ! id "$user" &> /dev/null 2>&1; then
         useradd -s /bin/bash -m -G alumnes "$user"
         echo "Usuari $user creat i afegit al grup alumnes."
     else
