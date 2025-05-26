@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: Carlos Alonso-Martinez
+# Date: 2025-04-23
 # Script per crear grups i usuaris a Linux
 # Crea grups professors i alumnes
 # Crea usuaris professors i alumnes amb contrasenyes inicials i assignació de grups
@@ -18,6 +20,8 @@ professors=(professor1 professor2 professor3)
 alumnes=(ofimatica disseny programacio)
 
 # Crear grups
+# Comprova si els grups ja existeixen i els crea si no
+
 for grup in ${grups[*]}
 do
     if ! getent group "$grup" &> /dev/null 2>&1; then
@@ -32,7 +36,10 @@ done
 password="123456" 
 
 # Crear professors
-for user in ${professors[*]}
+# Als professors se'ls assigna una contrasenya inicial
+# aquí usem alternativament @ enlloc de * per recòrrer l'array
+
+for user in "${professors[@]}"
 do
    
     if ! id "$user" &> /dev/null 2>&1; then
@@ -44,7 +51,7 @@ do
     fi
 done
 
-# Crear alumnes
+# Crear alumnes aula
 for user in ${alumnes[*]}
 do
     if ! id "$user" &> /dev/null 2>&1; then
